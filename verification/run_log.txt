@@ -1,0 +1,29 @@
+ArrayAddition        debug-G          PASS
+ArrayAddition        O0               PASS
+ArrayAddition        O1               PASS
+ArrayAddition        O2               PASS
+ArrayAddition        O3               PASS
+ArrayAddition        O3-nofma         PASS
+ArrayAddition        O3-ptx75         PASS
+ArrayAddition        O3-fastmath      PASS
+ArrayAddition        build-sm_80      BUILT
+ArrayAddition        build-sm_90      BUILT
+ImageBlur            debug-G          PASS
+ImageBlur            O0               PASS
+ImageBlur            O1               PASS
+ImageBlur            O2               PASS
+ImageBlur            O3               PASS
+ImageBlur            O3-nofma         PASS
+ImageBlur            O3-ptx75         PASS
+ImageBlur            O3-fastmath      WARN
+ImageBlur            build-sm_80      BUILT
+ImageBlur            build-sm_90      BUILT
+
+_nvcc 13.0 · Tesla T4 (sm_75) · 2026-10-13_
+
+| Kernel | debug-G | O0 | O1 | O2 | O3 | O3-nofma | O3-ptx75 | O3-fastmath | build-sm_80 | build-sm_90 |
+|---|---|---|---|---|---|---|---|---|---|---|
+| ArrayAddition | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | 🔨 | 🔨 |
+| ImageBlur | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚠️ | 🔨 | 🔨 |
+
+✅ matches CPU reference and baseline · ⚠️ lenient config differs (expected) · ❌ cpu = GPU differs from CPU · ❌ diff = differs from baseline · 🔧❌ build failed · 💥 crashed · 🔨 built only (not run)

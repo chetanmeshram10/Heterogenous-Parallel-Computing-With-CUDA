@@ -14,9 +14,12 @@ thread. Threads with `count == 0` also compute `0/0`.
 
 * **Fix:** one guard line at the top of the kernel (`ImageBlur/kernel.cuh`).
   Build with `-DBLUR_NO_GUARD` to restore the original behaviour.
-* **Evidence:** reproduced in a CPU emulation of the thread grid (4,950 wrong
-  output values and 12,885 overwritten canary slots across the test sizes).
-  GPU confirmation: _fill in after the Colab run (see commands below)._
+* **Evidence:** reproduced on a Tesla T4 (CUDA 13.0). `compute-sanitizer` reports
+  `Invalid __global__ write of size 4 bytes` at `kernel.cuh:35` (the first output
+  store) from the first test case, a 1x1 image with a 12-byte output buffer, with
+  225 errors before the run aborts (`verification/sanitizer_original.txt`).
+  With the guard in place the same check reports 0 errors
+  (`verification/sanitizer_guarded.txt`).
 
 Reproduce on a GPU:
 ```bash
