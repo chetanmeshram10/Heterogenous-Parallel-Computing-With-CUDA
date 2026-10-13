@@ -1,0 +1,5 @@
+verification/build/
+*.exe
+*.obj
+*.exp
+*.lib
